@@ -6,7 +6,7 @@
 /*   By: doberes <doberes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 15:00:12 by doberes           #+#    #+#             */
-/*   Updated: 2024/12/21 16:01:08 by doberes          ###   ########.fr       */
+/*   Updated: 2024/12/21 16:45:21 by doberes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,13 @@
 
 // prints a string on the stdout and returns de count of printed chars
 
-int	print_str(char *str)
-{
-	int	i;
-	
+int	print_string(char *str)
+{	
 	// gestion des chaines null
 	if (str == NULL)
 		str = "(null)";
-	// boucle pour recopier une chaine sur le stdout
-	i = 0;
-	while (str[i] != '\0')
-	{
-		write (1, &str[i], 1);
-		i++;
-	}
+	// appel ft_putstr_fd
+	ft_putstr_fd(str, 1);
 	// retourner le nombre de caracteres imprimes
-	return (i);
+	return (ft_strlen(str));
 }

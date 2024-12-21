@@ -6,7 +6,7 @@
 /*   By: doberes <doberes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:18:29 by doberes           #+#    #+#             */
-/*   Updated: 2024/12/21 13:28:26 by doberes          ###   ########.fr       */
+/*   Updated: 2024/12/21 16:48:02 by doberes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,11 @@ int print_char(char c);
 int print_string(char *str);
 
 // --------------------------- Utility fonctions ------------------------------
-int ft_putchar_fd(char c, int fd);
-int ft_putstr_fd(char *s, int fd);
-int ft_putnbr_fd(int n, int fd);
-int ft_putunbr_fd(unsigned int n, int fd);
-int ft_puthex_fd(unsigned int n, char format, int fd);
+void    ft_putchar_fd(char c, int fd);
+void    ft_putstr_fd(char *s, int fd);
+size_t	ft_strlen(const char *s);
+//int ft_putnbr_fd(int n, int fd);
+//int ft_putunbr_fd(unsigned int n, int fd);
+//int ft_puthex_fd(unsigned int n, char format, int fd);
 
 #endif

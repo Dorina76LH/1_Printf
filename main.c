@@ -6,11 +6,11 @@
 /*   By: doberes <doberes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:00:58 by doberes           #+#    #+#             */
-/*   Updated: 2024/12/21 15:33:49 by doberes          ###   ########.fr       */
+/*   Updated: 2024/12/21 16:51:20 by doberes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// gcc -Wall -Wextra -Werror -Iinclude main.c -L. -lftprintf -o test
+// gcc -Wall -Wextra -Werror -Iincludes main.c -L. -lftprintf -o test
 // -Include : ou trouver les fichiers .h
 // -L : repertoire ou se trouve le fichier libftprintf.a
 // -lftprintf : lie la bibliotheque libftprintf.a au programme

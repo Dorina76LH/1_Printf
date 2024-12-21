@@ -44,13 +44,13 @@ $(NAME) : $(OBJS)
 
 # Compile .o files
 %.o: %.c 
-	$(CC) -c $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 ## // CLEANING RULES
 
 # Remove $(OBJ) => (.o) files
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJS)
 	@echo "Object files cleaned!"
 
 # Remove $(NAME) => final binary
