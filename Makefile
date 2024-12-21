@@ -14,7 +14,7 @@ LIBFT_DIR = libft
 SRCS =	$(SRCS_DIR)/ft_printf.c \
 		$(SRCS_DIR)/check_format.c \
 		$(SRCS_DIR)/print_char.c \
-		$(SRCS_DIR)/print_str.c \
+		$(SRCS_DIR)/print_string.c \
 		$(LIBFT_DIR)/ft_putchar_fd.c \
 		$(LIBFT_DIR)/ft_putstr_fd.c \
 		$(LIBFT_DIR)/ft_strlen.c \
@@ -31,27 +31,32 @@ OBJS = $(SRCS:.c=.o)
 # Define compiler and compiler flags
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -I$(INCLUDE_DIR)
+AR = ar
+ARFLAGS = rcs
 
 # Rule for all .c files necessary to build the final binary
 all: $(NAME)
 
 # To make $(NAME), create all .o files 
 $(NAME) : $(OBJS)
-	$(AR) -r $(NAME) $?
+	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
+	@echo "Library $(NAME) created!"
 
 # Compile .o files
 %.o: %.c 
-	$(CC) -c $(CFLAGS) $?
+	$(CC) -c $(CFLAGS) -c $< -o $@
 
 ## // CLEANING RULES
 
 # Remove $(OBJ) => (.o) files
 clean:
 	rm -f $(OBJ)
+	@echo "Object files cleaned!"
 
 # Remove $(NAME) => final binary
 fclean: clean
 	rm -f $(NAME)
+	@echo "Library $(NAME) removed!"
 
 # Rebuild all : remove $(OBJ) and $(NAME) and compile all
 re: fclean all
