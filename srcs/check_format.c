@@ -6,7 +6,7 @@
 /*   By: doberes <doberes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:32:40 by doberes           #+#    #+#             */
-/*   Updated: 2024/12/21 14:52:19 by doberes          ###   ########.fr       */
+/*   Updated: 2024/12/21 17:12:34 by doberes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,14 @@ int	check_format(const char *format, va_list args)
 			i++; // pour se positionner apres le '%'
 			// gere un caractere
 			if (format[i] == 'c')
-				printed_chars = printed_chars + print_char(va_arg(args, int));
+				printed_chars += print_char(va_arg(args, int));
 			// gere le '%'
 			else if (format[i] == '%')
-				printed_chars = printed_chars + ft_putchar_fd('%', 1);
-			// si aucun specificateur valide, rien n'est imprime
+				printed_chars += ft_putchar_fd('%', 1);
+			// rajouter d'autres conversions ici
 		}
-		// imprime un caractere normal
 		else
-		printed_chars = printed_chars +ft_putchar_fd(format[i], 1);
+			printed_chars += ft_putchar_fd(format[i], 1);
 	}
 	i++; // passe au caractere suivant
 	return (printed_chars);

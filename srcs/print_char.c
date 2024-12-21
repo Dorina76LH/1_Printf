@@ -6,7 +6,7 @@
 /*   By: doberes <doberes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 14:55:12 by doberes           #+#    #+#             */
-/*   Updated: 2024/12/21 15:21:33 by doberes          ###   ########.fr       */
+/*   Updated: 2024/12/21 17:14:16 by doberes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@
 
 int	print_char(char c)
 {
-    write(1, &c, 1);
-    return (1);
+    ft_putchar_fd(c, 1);
+    return (1); // retourne le nombre de caracteres imprimes, ici 1
 }
