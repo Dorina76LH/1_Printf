@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doberes <doberes@student.42.fr>            +#+  +:+       +#+        */
+/*   By: doberes <doberes@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:32:40 by doberes           #+#    #+#             */
-/*   Updated: 2024/12/21 15:21:43 by doberes          ###   ########.fr       */
+/*   Updated: 2024/12/22 22:20:31 by doberes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,28 @@
 // - nettoie va_list
 // - retourne printed chars
 
-int ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
-    va_list args; // liste d'arguments
-    int     printed_chars; // caracteres imprimes
+	va_list	arg_ptr; // liste d'arguments
+	int		count; // caracteres imprimes
 
-    va_start(args, format); // se positionner au premier argument
-    printed_chars = check_format(format, args); // appeler check_format
-    va_end(args); // nettoyer va_list et free les mallocs
-    return (printed_chars);
+	va_start(arg_ptr, format); // se positionner au premier argument
+	count = 0;
+	// boucle pour parcourir la chaine
+	// tant qu'on ne trouve pa le car de fin de chaine daans format
+	while (*format != '\0')
+	{
+		// si '%' trouve (format specificateur)
+		if (*format == '%')
+		{
+			++format;
+			count += check_format(*format, arg_ptr); // appeler check_format avec format incremente
+		}
+		// si pas de '%' trouve, afficher le carcatere avec write
+		else
+			count += write(1, format, 1);
+		++format;
+	}
+	va_end(arg_ptr); // nettoyer va_list et free les mallocs
+	return (count);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_char.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doberes <doberes@student.42.fr>            +#+  +:+       +#+        */
+/*   By: doberes <doberes@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 14:55:12 by doberes           #+#    #+#             */
-/*   Updated: 2024/12/21 17:14:16 by doberes          ###   ########.fr       */
+/*   Updated: 2024/12/22 22:28:47 by doberes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,11 @@
 
 // writes a char on the stdout and returns the count of printed char (1)
 
-int	print_char(char c)
+int	print_char(int c)
 {
-    ft_putchar_fd(c, 1);
-    return (1); // retourne le nombre de caracteres imprimes, ici 1
+	int	count;
+
+	count = 0;
+	count += write(1, &c, 1);
+	return (count);
 }

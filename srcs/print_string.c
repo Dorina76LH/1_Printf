@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_string.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doberes <doberes@student.42.fr>            +#+  +:+       +#+        */
+/*   By: doberes <doberes@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 15:00:12 by doberes           #+#    #+#             */
-/*   Updated: 2024/12/21 16:45:21 by doberes          ###   ########.fr       */
+/*   Updated: 2024/12/22 22:30:07 by doberes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,24 @@
 #include "ft_printf.h"
 
 // ============================================================================
-// ------------------------------- print_str ----------------------------------
+// ------------------------------ print_string --------------------------------
 // ============================================================================
 
 // prints a string on the stdout and returns de count of printed chars
+// boucle while pour parcourir la chaine jusqu'au car '\0'
 
 int	print_string(char *str)
-{	
-	// gestion des chaines null
+{
+	int	count;
+
 	if (str == NULL)
 		str = "(null)";
-	// appel ft_putstr_fd
-	ft_putstr_fd(str, 1);
-	// retourner le nombre de caracteres imprimes
-	return (ft_strlen(str));
+	count = 0;
+	while (*str != '\0')
+	{
+		print_char((int)*str);
+		++count;
+		++str;
+	}
+	return (count);
 }

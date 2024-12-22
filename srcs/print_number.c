@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_format.c                                     :+:      :+:    :+:   */
+/*   print_number.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: doberes <doberes@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/21 13:32:40 by doberes           #+#    #+#             */
-/*   Updated: 2024/12/22 22:30:54 by doberes          ###   ########.fr       */
+/*   Created: 2024/12/22 21:52:20 by doberes           #+#    #+#             */
+/*   Updated: 2024/12/22 22:36:08 by doberes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,30 +17,27 @@
 #include "ft_printf.h"
 
 // ============================================================================
-// ----------------------------- check_format ---------------------------------
+// ----------------------------- print_number ---------------------------------
 // ============================================================================
-// analyse le caractere recu en parametre pour trouver le bon format
 
-int	check_format(char specifier, va_list arg_ptr)
+int	print_number(long n)
 {
-	int	count;
+	int			count;
+	const char	*symbols;
 
 	count = 0;
-	if (specifier == 'c')
-		count += print_char(va_arg(arg_ptr, int));
-	else if (specifier == 's')
-		count += print_string(va_arg(arg_ptr, char *));
-	else if (specifier == 'd' || specifier == 'i')
-		count += print_number(va_arg(arg_ptr, int));
-	else if (specifier == 'x')
-		count += print_number_base(va_arg(arg_ptr, unsigned int), "0123456789abcdef",16);
-	else if (specifier == 'X')
-		count += print_number_base(va_arg(arg_ptr, unsigned int), "0123456789ABCDEF",16);
-	else if (specifier == 'b')
-		count += print_number_base(va_arg(arg_ptr, unsigned int), "01", 2);
-	else if (specifier == '%')
-		count += write(1, "%", 1);
+	symbols = "0123456789";
+	if (n < 0)
+	{
+		count += write(1, "-", 1);
+		n = -n;
+	}
+	else if (n < 10)
+		count += print_char(symbols[n]);
 	else
-		count += write(1, &specifier, 1);
+	{
+		count += print_number(n / 10);
+		count += print_number(n % 10);
+	}
 	return (count);
 }

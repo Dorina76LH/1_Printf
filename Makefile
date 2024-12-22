@@ -15,6 +15,8 @@ SRCS =	$(SRCS_DIR)/ft_printf.c \
 		$(SRCS_DIR)/check_format.c \
 		$(SRCS_DIR)/print_char.c \
 		$(SRCS_DIR)/print_string.c \
+		$(SRCS_DIR)/print_number_base.c \
+		$(SRCS_DIR)/print_number.c \
 		$(LIBFT_DIR)/ft_putchar_fd.c \
 		$(LIBFT_DIR)/ft_putstr_fd.c \
 		$(LIBFT_DIR)/ft_strlen.c \

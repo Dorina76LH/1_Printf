@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doberes <doberes@student.42.fr>            +#+  +:+       +#+        */
+/*   By: doberes <doberes@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 09:16:59 by doberes           #+#    #+#             */
-/*   Updated: 2024/12/21 17:13:40 by doberes          ###   ########.fr       */
+/*   Updated: 2024/12/22 16:39:23 by doberes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <string.h>
 # include <unistd.h>
 # include <ctype.h>
-# include <bsd/string.h>
+//# include <bsd/string.h>
 
 
 size_t	ft_strlen(const char *s);
