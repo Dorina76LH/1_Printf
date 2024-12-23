@@ -6,7 +6,7 @@
 /*   By: doberes <doberes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 14:57:07 by doberes           #+#    #+#             */
-/*   Updated: 2024/12/23 14:58:25 by doberes          ###   ########.fr       */
+/*   Updated: 2024/12/23 15:43:38 by doberes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int	print_unsigned(unsigned int n)
 		count += print_char(symbols[n]);
 	else
 	{
-		count += print_number(n / 10);
-		count += print_number(n % 10);
+		count += print_unsigned(n / 10);
+		count += print_unsigned(n % 10);
 	}
 	return (count);
 }

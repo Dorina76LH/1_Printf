@@ -5,27 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: doberes <doberes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/21 13:00:58 by doberes           #+#    #+#             */
-/*   Updated: 2024/12/23 15:36:49 by doberes          ###   ########.fr       */
+/*   Created: 2024/12/23 17:13:04 by doberes           #+#    #+#             */
+/*   Updated: 2024/12/23 17:13:32 by doberes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// gcc -Wall -Wextra -Werror -Iincludes main.c -L. -lftprintf -o test
-// -Include : ou trouver les fichiers .h
-// -L : repertoire ou se trouve le fichier libftprintf.a
-// -lftprintf : lie la bibliotheque libftprintf.a au programme
-// -o test : nomme le fichier executable test
-// ./test : executer le test
-// main fonction => compare ft_printf and printf fonctions
-
+// =========================================================================
+// -------------------------- Included libraries ---------------------------
+// =========================================================================
 #include "ft_printf.h"
-
+// =========================================================================
+// --------------------------------- main ----------------------------------
+// =========================================================================
+// create main.c
+// gcc -Wall -Wextra -Werror -Iincludes main.c -L. -lftprintf -o test
+// -Include : .h files
+// -L : folder of libftprintf.a
+// -lftprintf : include the library libftprintf.a
+// -o test : name of .o 'test'
+// ./test : run 'test'
+// main fonction => compare ft_printf and printf fonctions
 int	main(void)
 {
 	int		count;
 	int		x;
 	void	*ptr;
-
 	x = 42;
 	ptr = &x;
 	count = 0;
@@ -35,12 +39,24 @@ int	main(void)
 	ft_printf("Printed chars : %d\n", count);
 	count = printf("   printf >> %c | ", 'A');
 	printf("Printed chars : %d\n", count);
+	count = ft_printf("ft_printf >> %c%c | ", 'A', 'B');
+	ft_printf("Printed chars : %d\n", count);
+	count = printf("   printf >> %c%c | ", 'A', 'B');
+	printf("Printed chars : %d\n", count);
 	//
 	// -------- test %s --------
 	printf("\n\n---- Test string ----\n");
 	count = ft_printf("ft_printf >> Hello %s ! | ", "World");
 	ft_printf("Printed chars : %d\n", count);
 	count = printf("   printf >> Hello %s ! | ", "World");
+	printf("Printed chars : %d\n", count);
+	count = ft_printf("ft_printf >> Hello %s ! | ", "");
+	ft_printf("Printed chars : %d\n", count);
+	count = printf("   printf >> Hello %s ! | ", "");
+	printf("Printed chars : %d\n", count);
+	count = ft_printf("ft_printf >> %s%s", "Hello ", "World ! | ");
+	ft_printf("Printed chars : %d\n", count);
+	count = printf("   printf >> %s%s", "Hello ", "World ! | ");
 	printf("Printed chars : %d\n", count);
 	//
 	// -------- test %d --------
@@ -65,6 +81,10 @@ int	main(void)
 	ft_printf("Printed chars : %d\n", count);
 	//count = printf("   printf >> %d | ", -2147483648);
 	//printf("Printed chars : %d\n", count);
+	count = ft_printf("ft_printf >> %d%d | ", -7000, 42);
+	ft_printf("Printed chars : %d\n", count);
+	count = printf("   printf >> %d%d | ", -7000, 42);
+	printf("Printed chars : %d\n", count);
 	//
 	// -------- test %% --------
 	printf("\n\n---- Test %% ----\n");
@@ -91,6 +111,10 @@ int	main(void)
 	ft_printf("Printed chars : %d\n", count);
 	count = printf("   printf >> %x | ", 42);
 	printf("Printed chars : %d\n", count);
+	count = ft_printf("ft_printf >> %x%x | ", 42,0);
+	ft_printf("Printed chars : %d\n", count);
+	count = printf("   printf >> %x%x | ", 42, 0);
+	printf("Printed chars : %d\n", count);
 	//
 	// -------- test hexa upper --------
 	printf("\n\n---- Test hexa upper ----\n");
@@ -110,6 +134,10 @@ int	main(void)
 	ft_printf("Printed chars : %d\n", count);
 	count = printf("   printf >> %X | ", 42);
 	printf("Printed chars : %d\n", count);
+	count = ft_printf("ft_printf >> %X%X | ", 42,0);
+	ft_printf("Printed chars : %d\n", count);
+	count = printf("   printf >> %X%X | ", 42, 0);
+	printf("Printed chars : %d\n", count);
 	//
 	// -------- test pointer --------
 	printf("\n\n---- Test pointer ----\n");
@@ -120,6 +148,10 @@ int	main(void)
 	count = ft_printf("ft_printf >> %p | ", ptr);
 	ft_printf("Printed chars : %d\n", count);
 	count = printf("   printf >> %p | ", ptr);
+	printf("Printed chars : %d\n", count);
+	count = ft_printf("ft_printf >> %p%p | ", ptr, NULL);
+	ft_printf("Printed chars : %d\n", count);
+	count = printf("   printf >> %p%p | ", ptr, NULL);
 	printf("Printed chars : %d\n", count);
 	//
 	// -------- test %u --------
@@ -136,13 +168,57 @@ int	main(void)
 	ft_printf("Printed chars : %d\n", count);
 	count = printf("   printf >> %u | ", 12345);
 	printf("Printed chars : %d\n", count);
-	count = ft_printf("ft_printf >> %u | ", 42949672943);
-	ft_printf("Printed chars : %d\n", count);
+	count = ft_printf("ft_printf >> %u | ", 4294967294);
+	// ft_printf("Printed chars : %d\n", count);
 	// count = printf("   printf >> %u | ", 4294967294);
-	// printf("Printed chars : %d\n", count);
+	printf("Printed chars : %d\n", count);
 	count = ft_printf("ft_printf >> %u | ", 4294967295);
 	ft_printf("Printed chars : %d\n", count);
 	// count = printf("   printf >> %u | ", 4294967295);
 	// printf("Printed chars : %d\n", count);
+	count = ft_printf("ft_printf >> %u%u | ", 12345, 0);
+	ft_printf("Printed chars : %d\n", count);
+	count = printf("   printf >> %u%u | ", 12345, 0);
+	printf("Printed chars : %d\n", count);
+	// -------- test identical --------
+	printf("\n\n---- Test identical ----\n");
+	count = ft_printf("ft_printf >> %c%c | ", 'A', 'B');
+	ft_printf("Printed chars : %d\n", count);
+	count = printf("   printf >> %c%c | ", 'A', 'B');
+	printf("Printed chars : %d\n", count);
+	count = ft_printf("ft_printf >> %s%s", "Hello ", "World ! | ");
+	ft_printf("Printed chars : %d\n", count);
+	count = printf("   printf >> %s%s", "Hello ", "World ! | ");
+	printf("Printed chars : %d\n", count);
+	count = ft_printf("ft_printf >> %d%d | ", -7000, 42);
+	ft_printf("Printed chars : %d\n", count);
+	count = printf("   printf >> %d%d | ", -7000, 42);
+	printf("Printed chars : %d\n", count);
+	count = ft_printf("ft_printf >> %x%x | ", 42,0);
+	ft_printf("Printed chars : %d\n", count);
+	count = printf("   printf >> %x%x | ", 42, 0);
+	printf("Printed chars : %d\n", count);
+	count = ft_printf("ft_printf >> %X%X | ", 42,0);
+	ft_printf("Printed chars : %d\n", count);
+	count = printf("   printf >> %X%X | ", 42, 0);
+	printf("Printed chars : %d\n", count);
+	count = ft_printf("ft_printf >> %p%p | ", ptr, NULL);
+	ft_printf("Printed chars : %d\n", count);
+	count = printf("   printf >> %p%p | ", ptr, NULL);
+	printf("Printed chars : %d\n", count);
+	count = ft_printf("ft_printf >> %u%u | ", 12345, 0);
+	ft_printf("Printed chars : %d\n", count);
+	count = printf("   printf >> %u%u | ", 12345, 0);
+	printf("Printed chars : %d\n", count);
+	// -------- test multiple --------
+	printf("\n\n---- Test multiple ----\n");
+	count = ft_printf("ft_printf >> %c %s %p | ", 'A', "Hi", ptr);
+	ft_printf("Printed chars : %d\n", count);
+	count = printf("   printf >> %c %s %p | ", 'A', "Hi", ptr);
+	printf("Printed chars : %d\n", count);
+	count = ft_printf("ft_printf >> %x %X %% %u | ", 42, 42, 12345);
+	ft_printf("Printed chars : %d\n", count);
+	count = printf("   printf >> %x %X %% %u | ", 42, 42, 12345);
+	printf("Printed chars : %d\n", count);
 	return (0);
 }

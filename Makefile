@@ -8,7 +8,6 @@ NAME = libftprintf.a
 # Directories
 INCLUDE_DIR = includes
 SRCS_DIR = srcs
-LIBFT_DIR = libft
 
 # List of source files
 SRCS =	$(SRCS_DIR)/ft_printf.c \
@@ -18,10 +17,7 @@ SRCS =	$(SRCS_DIR)/ft_printf.c \
 		$(SRCS_DIR)/print_hex.c \
 		$(SRCS_DIR)/print_number.c \
 		$(SRCS_DIR)/print_pointer.c \
-		$(SRCS_DIR)/print_unsigned.c \
-		$(LIBFT_DIR)/ft_putchar_fd.c \
-		$(LIBFT_DIR)/ft_putstr_fd.c \
-		$(LIBFT_DIR)/ft_strlen.c
+		$(SRCS_DIR)/print_unsigned.c
 
 # List of object files (define the name of .o files from .c files)
 OBJS = $(SRCS:.c=.o)
