@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doberes <doberes@student.42lehavre.fr>     +#+  +:+       +#+        */
+/*   By: doberes <doberes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:18:29 by doberes           #+#    #+#             */
-/*   Updated: 2024/12/22 22:32:43 by doberes          ###   ########.fr       */
+/*   Updated: 2024/12/23 14:59:07 by doberes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 // ============================================================================
 // -------------------------------- Macros ------------------------------------
 // ============================================================================
-
 
 // ============================================================================
 // -------------------------- Included libraries ------------------------------
@@ -49,7 +48,9 @@ int	check_format(char specifier, va_list arg_ptr);
 int	print_char(int c);
 int	print_string(char *str);
 int	print_number(long n);
-int	print_number_base(unsigned int nbr, const char *symbols, int base);
+int	print_hex(unsigned long long nbr, const char *symbols);
+int	print_pointer(void *ptr);
+int	print_unsigned(unsigned int n);
 
 // --------------------------- Utility fonctions ------------------------------
 //int			ft_putchar_fd(char c, int fd);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_format.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doberes <doberes@student.42lehavre.fr>     +#+  +:+       +#+        */
+/*   By: doberes <doberes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:32:40 by doberes           #+#    #+#             */
-/*   Updated: 2024/12/22 22:30:54 by doberes          ###   ########.fr       */
+/*   Updated: 2024/12/23 14:59:58 by doberes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 // ============================================================================
 // ----------------------------- check_format ---------------------------------
 // ============================================================================
-// analyse le caractere recu en parametre pour trouver le bon format
+// checks the char after the specifier '%' and calls the print sub-fonction
 
 int	check_format(char specifier, va_list arg_ptr)
 {
@@ -33,11 +33,13 @@ int	check_format(char specifier, va_list arg_ptr)
 	else if (specifier == 'd' || specifier == 'i')
 		count += print_number(va_arg(arg_ptr, int));
 	else if (specifier == 'x')
-		count += print_number_base(va_arg(arg_ptr, unsigned int), "0123456789abcdef",16);
+		count += print_hex(va_arg(arg_ptr, unsigned int), "0123456789abcdef");
 	else if (specifier == 'X')
-		count += print_number_base(va_arg(arg_ptr, unsigned int), "0123456789ABCDEF",16);
-	else if (specifier == 'b')
-		count += print_number_base(va_arg(arg_ptr, unsigned int), "01", 2);
+		count += print_hex(va_arg(arg_ptr, unsigned int), "0123456789ABCDEF");
+	else if (specifier == 'p')
+		count += print_pointer(va_arg(arg_ptr, void *));
+	else if (specifier == 'u')
+		count += print_unsigned(va_arg(arg_ptr, unsigned int));
 	else if (specifier == '%')
 		count += write(1, "%", 1);
 	else

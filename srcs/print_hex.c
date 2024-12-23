@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   print_hex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: doberes <doberes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/21 13:32:40 by doberes           #+#    #+#             */
-/*   Updated: 2024/12/23 12:59:51 by doberes          ###   ########.fr       */
+/*   Created: 2024/12/22 17:28:47 by doberes           #+#    #+#             */
+/*   Updated: 2024/12/23 14:10:33 by doberes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,34 +17,37 @@
 #include "ft_printf.h"
 
 // ============================================================================
-// ------------------------------ ft_printf -----------------------------------
+// -------------------------------- print_hex ---------------------------------
 // ============================================================================
-// recoit une chaine de caracteres et un nbr varaible d'arguments en parametre
-// - count : number of printed chars
-// - va_list : initialise va_list
-// - va_start : position of first argument
-// - loop : call check_format if '%' format specifier found
-// - va_end : clean va_list (delete data and free malloc)
-// - return : count
 
-int	ft_printf(const char *format, ...)
+// coverts a decimal base number in hexadecimal (uppercase or lowercase format)
+
+int	print_hex(unsigned long long nbr, const char *symbols)
 {
-	va_list	arg_ptr;
-	int		count;
+	int	count;
 
-	va_start(arg_ptr, format);
 	count = 0;
-	while (*format != '\0')
+	if (nbr < 16)
+		count += print_char(symbols[nbr]);
+	else
 	{
-		if (*format == '%')
-		{
-			++format;
-			count += check_format(*format, arg_ptr);
-		}
-		else
-			count += write(1, format, 1);
-		++format;
+		count += print_hex(nbr / 16, symbols);
+		count += print_hex(nbr % 16, symbols);
 	}
-	va_end(arg_ptr);
 	return (count);
 }
+
+// int	print_number_base(unsigned int nbr, const char *symbols, int base)
+// {
+// 	int	count;
+
+// 	count = 0;
+// 	if (nbr < (unsigned int)base)
+// 		count += print_char(symbols[nbr]);
+// 	else
+// 	{
+// 		count += print_number_base(nbr / base, symbols, base);
+// 		count += print_number_base(nbr % base, symbols, base);
+// 	}
+// 	return (count);
+// }

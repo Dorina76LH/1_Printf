@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   print_pointer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: doberes <doberes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/21 13:32:40 by doberes           #+#    #+#             */
-/*   Updated: 2024/12/23 12:59:51 by doberes          ###   ########.fr       */
+/*   Created: 2024/12/23 12:00:23 by doberes           #+#    #+#             */
+/*   Updated: 2024/12/23 14:39:21 by doberes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,34 +17,24 @@
 #include "ft_printf.h"
 
 // ============================================================================
-// ------------------------------ ft_printf -----------------------------------
+// ---------------------------- print_pointer ---------------------------------
 // ============================================================================
-// recoit une chaine de caracteres et un nbr varaible d'arguments en parametre
-// - count : number of printed chars
-// - va_list : initialise va_list
-// - va_start : position of first argument
-// - loop : call check_format if '%' format specifier found
-// - va_end : clean va_list (delete data and free malloc)
-// - return : count
 
-int	ft_printf(const char *format, ...)
+// - converts the address of the pointer in an unsigned long
+// - print '0x' specifier for pointer address
+// - print the pointer address in hexadecimal (lowercase) format
+// - return : number of printed chars
+
+int	print_pointer(void *ptr)
 {
-	va_list	arg_ptr;
-	int		count;
+	unsigned long long	address;
+	int					count;
 
-	va_start(arg_ptr, format);
 	count = 0;
-	while (*format != '\0')
-	{
-		if (*format == '%')
-		{
-			++format;
-			count += check_format(*format, arg_ptr);
-		}
-		else
-			count += write(1, format, 1);
-		++format;
-	}
-	va_end(arg_ptr);
+	if (ptr == NULL)
+		return (write(1, "(nil)", 5));
+	address = (unsigned long long)ptr;
+	count += write(1, "0x", 2);
+	count += print_hex(address, "0123456789abcdef");
 	return (count);
 }

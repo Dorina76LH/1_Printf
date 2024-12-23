@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_number.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doberes <doberes@student.42lehavre.fr>     +#+  +:+       +#+        */
+/*   By: doberes <doberes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 21:52:20 by doberes           #+#    #+#             */
-/*   Updated: 2024/12/22 22:36:08 by doberes          ###   ########.fr       */
+/*   Updated: 2024/12/23 13:02:38 by doberes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+// prints a decimal base number ASCII char by ASCII char
 
 // ============================================================================
 // -------------------------- Included libraries ------------------------------
@@ -32,7 +34,7 @@ int	print_number(long n)
 		count += write(1, "-", 1);
 		n = -n;
 	}
-	else if (n < 10)
+	if (n < 10)
 		count += print_char(symbols[n]);
 	else
 	{
