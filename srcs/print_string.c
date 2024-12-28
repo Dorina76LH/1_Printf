@@ -21,7 +21,7 @@
 // ============================================================================
 
 // prints a string on the stdout and returns de count of printed chars
-// while loop to traverse the string until the character ‘\0’.
+// while loop to iterate through the string until reaching the character ‘\0’.
 
 int	print_string(char *str)
 {
