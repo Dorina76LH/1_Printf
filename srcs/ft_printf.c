@@ -19,7 +19,7 @@
 // ============================================================================
 // ------------------------------ ft_printf -----------------------------------
 // ============================================================================
-// recoit une chaine de caracteres et un nbr varaible d'arguments en parametre
+// Receives a string and a variable number of arguments as parameters
 // - count : number of printed chars
 // - va_list : initialise va_list
 // - va_start : position of first argument
