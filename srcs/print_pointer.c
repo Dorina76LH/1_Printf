@@ -20,7 +20,7 @@
 // ---------------------------- print_pointer ---------------------------------
 // ============================================================================
 
-// - converts the address of the pointer in an unsigned long
+// - converts the address of the pointer in an unsigned long long
 // - print '0x' specifier for pointer address
 // - print the pointer address in hexadecimal (lowercase) format
 // - return : number of printed chars
