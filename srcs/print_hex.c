@@ -20,7 +20,7 @@
 // -------------------------------- print_hex ---------------------------------
 // ============================================================================
 
-// coverts a decimal base number in hexadecimal (uppercase or lowercase format)
+// converts a decimal base number in hexadecimal (uppercase or lowercase format)
 
 int	print_hex(unsigned long long nbr, const char *symbols)
 {
